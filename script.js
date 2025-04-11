@@ -1,12 +1,11 @@
 const clientes = document.getElementById("lista-clientes");
 
-// Função para limpar campos após cadastro
+
 function limparCampos() {
     document.getElementById("nome").value = "";
     document.getElementById("email").value = "";
 }
 
-// Cadastrar usuário (POST)
 document.getElementById("adc").addEventListener("click", () => {
     const nome = document.getElementById("nome").value;
     const email = document.getElementById("email").value;
@@ -18,8 +17,7 @@ document.getElementById("adc").addEventListener("click", () => {
     })
         .then(response => response.json())
         .then(() => {
-            limparCampos(); 
-            document.getElementById("msg").textContent = "Usuário cadastrado com sucesso!";
+            limparCampos();
         })
         .catch(error => console.error("Erro ao cadastrar:", error));
 });
@@ -29,11 +27,11 @@ function listar() {
     fetch("https://ca6540313b924b1031de.free.beeceptor.com/api/users/")
         .then(response => response.json())
         .then(listaDeClientes => {
-            clientes.innerHTML = ""; 
+            clientes.innerHTML = "";
 
             listaDeClientes.forEach(cliente => {
                 const item = document.createElement("li");
-                item.setAttribute("data-id", cliente.id); 
+                item.setAttribute("data-id", cliente.id);
                 item.innerHTML = `
                 Nome: ${cliente.nome} 
                 Email: ${cliente.email} 
